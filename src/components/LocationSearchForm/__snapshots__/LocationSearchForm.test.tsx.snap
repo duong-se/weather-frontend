@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationSearchForm should match snapshot 1`] = `
+<form
+  className="w-100"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <TextInput />
+    </div>
+    <div
+      className="col"
+    >
+      <button
+        className="btn btn-primary"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>
+`;

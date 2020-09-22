@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationInput should match snapshot 1`] = `
+<div
+  className="input-group flex-nowrap"
+>
+  <div
+    className="input-group-prepend"
+  >
+    <span
+      className="input-group-text"
+    >
+      <ForwardRef(SvgSearchIcon) />
+    </span>
+  </div>
+  <input
+    className="form-control"
+    id="woeid"
+    name="woeid"
+    placeholder="Search"
+    type="text"
+  />
+</div>
+`;
