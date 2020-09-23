@@ -2,11 +2,11 @@
 
 exports[`ForecastItem should match snapshot 1`] = `
 <button
-  className="m-2 btn btn-light root"
+  className="m-1 btn btn-light root"
   onClick={[MockFunction]}
 >
   <h6
-    className="card-subtitle mb-2 mt-2 text-muted textFontSize"
+    className="card-subtitle mb-2 mt-2 text-muted"
   >
     Tuesday
   </h6>
@@ -22,14 +22,12 @@ exports[`ForecastItem should match snapshot 1`] = `
     className="row card-text d-flex temperature"
   >
     <h6
-      className="textFontSize"
       data-test="min-temp"
     >
       15
       ℃
     </h6>
     <h6
-      className="textFontSize"
       data-test="max-temp"
     >
       24

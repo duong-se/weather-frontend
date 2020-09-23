@@ -2,27 +2,11 @@ import React from 'react'
 import Alert from '../../components/Alert/Alert'
 import ForecastList from '../../components/ForecastList'
 import LocationSearchForm from '../../components/LocationSearchForm'
-import { fetchLocationWeather } from '../../service/api'
+import { fetchLocation, fetchWeather } from '../../service/api'
 import { Weather } from '../../typings'
 import { getDay } from '../../utils/getDay'
 import { roundNumber } from '../../utils/roundNumber'
 import style from './App.module.scss'
-
-export const renderWeatherStateImage = (currentWeatherIndex: number, weather?: Weather) => {
-  const weatherStateAbbr = weather?.consolidated_weather?.[currentWeatherIndex]?.weather_state_abbr
-  if (!weatherStateAbbr) {
-    return null
-  }
-  return (
-    <div className="col text-center">
-      <img
-        alt={weatherStateAbbr}
-        className={style.weatherStateImage}
-        src={`/static/img/weather/${weatherStateAbbr}.svg`}
-      />
-    </div>
-  )
-}
 
 export const renderCurrentWeatherInfo = (currentWeatherIndex: number, weather?: Weather) => {
   const currentWeather = weather?.consolidated_weather?.[currentWeatherIndex]
@@ -30,11 +14,16 @@ export const renderCurrentWeatherInfo = (currentWeatherIndex: number, weather?: 
     return null
   }
   return (
-    <div className="col">
+    <div className="text-center">
+      <h1>{currentWeather?.weather_state_name}</h1>
+      {currentWeather?.the_temp && (
+        <div>
+          <span className={style.temperatureText}>{roundNumber(currentWeather?.the_temp)}</span>
+          <span>&#8451;</span>
+        </div>
+      )}
       <h4>{weather?.title ?? ''}</h4>
-      <h5>{currentWeather?.weather_state_name}</h5>
       <h6>{getDay(currentWeather?.applicable_date)}</h6>
-      {currentWeather?.the_temp && <h1>{roundNumber(currentWeather?.the_temp)}&#8451;</h1>}
     </div>
   )
 }
@@ -56,7 +45,7 @@ export type OnSubmitParams = {
   setWeather: React.Dispatch<React.SetStateAction<Weather | undefined>>
 }
 
-export const onSubmit = ({ setLoading, setError, setWeather }: OnSubmitParams) => (
+export const onSubmit = ({ setLoading, setError, setWeather }: OnSubmitParams) => async (
   e: React.BaseSyntheticEvent<any>,
 ) => {
   e.preventDefault()
@@ -64,16 +53,16 @@ export const onSubmit = ({ setLoading, setError, setWeather }: OnSubmitParams) =
   setError('')
   setWeather(undefined)
   const locationName = e?.target?.locationName?.value
-  fetchLocationWeather({ locationName })
-    .then((result) => {
-      setWeather(result)
-    })
-    .catch((error) => {
-      setError(error.message)
-    })
-    .finally(() => {
-      setLoading(false)
-    })
+  try {
+    const locations = await fetchLocation({ locationName })
+    const firstWeatherLocationWoeid = locations?.[0]?.woeid
+    const weathers = await fetchWeather({ woeid: firstWeatherLocationWoeid })
+    setWeather(weathers)
+  } catch (error) {
+    setError(error?.message)
+  } finally {
+    setLoading(false)
+  }
 }
 
 const App: React.FC = () => {
@@ -85,15 +74,14 @@ const App: React.FC = () => {
   return (
     <div className={`${style.root} container-fluid`}>
       <div className={`card p-4 ${style.weatherWidget}`}>
-        <div className="row no-gutters my-4">
+        <div className={`row no-gutters mb-4 ${style.information}`}>
           <LocationSearchForm isLoading={isLoading} onSubmit={onSubmit({ setLoading, setError, setWeather })} />
         </div>
         {renderError(errorMessage)}
-        <div className="row no-gutters mb-4">
-          {renderWeatherStateImage(currentWeatherIndex, weather)}
+        <div className={`row no-gutters mb-4 ${style.information}`}>
           {renderCurrentWeatherInfo(currentWeatherIndex, weather)}
         </div>
-        <div className="row no-gutters mb-4">
+        <div className={`row no-gutters ${style.information}`}>
           <ForecastList
             setCurrentWeather={setCurrentWeatherIndex}
             consolidatedWeathers={weather?.consolidated_weather ?? []}

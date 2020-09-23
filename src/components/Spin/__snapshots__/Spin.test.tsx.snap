@@ -6,8 +6,6 @@ exports[`Spin should match snapshot 1`] = `
 >
   <span
     className="sr-only"
-  >
-    Loading...
-  </span>
+  />
 </div>
 `;

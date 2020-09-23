@@ -1,6 +1,7 @@
 import React from 'react'
-import LocationInput from '../LocationInput'
 import Spin from '../Spin'
+import { ReactComponent as SearchIcon } from './SearchIcon.svg'
+import style from './LocationSearchForm.module.scss'
 
 export type LocationSearchFormProps = {
   onSubmit: (e: React.BaseSyntheticEvent<any>) => void
@@ -10,15 +11,24 @@ export type LocationSearchFormProps = {
 export const LocationSearchForm: React.FC<LocationSearchFormProps> = ({ onSubmit, isLoading }) => {
   return (
     <form className="w-100" onSubmit={onSubmit}>
-      <div className="row">
-        <div className="col-sm-8 col-md-8 col-lg-3 mb-4">
-          <LocationInput />
-        </div>
-        <div className="col-sm-4 cold-md-4 col-lg-3 mb-4">
-          <button type="submit" className="btn btn-primary w-100">
-            {isLoading ? <Spin /> : 'Submit'}
-          </button>
-        </div>
+      <div className="input-group flex-nowrap">
+        <input
+          name="locationName"
+          type="text"
+          className="form-control"
+          id="locationName"
+          placeholder="Search"
+          required
+        />
+        <button type="submit" className={`input-group-prepend ${style.searchButton}`}>
+          {isLoading ? (
+            <Spin />
+          ) : (
+            <span className={style.searchIcon}>
+              <SearchIcon />
+            </span>
+          )}
+        </button>
       </div>
     </form>
   )

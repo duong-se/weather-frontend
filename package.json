@@ -72,9 +72,13 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
+    "coveragePathIgnorePatterns": [
+      "index.ts",
+      "index.tsx",
+      "serviceWorker.ts"
+    ],
     "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!src/index.ts"
+      "src/**/*.{ts,tsx}"
     ]
   }
 }

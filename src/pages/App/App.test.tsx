@@ -1,11 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import App, { renderCurrentWeatherInfo, renderError, renderWeatherStateImage, onSubmit } from './App'
-import { fetchLocationWeather } from '../../service/api'
+import App, { renderCurrentWeatherInfo, renderError, onSubmit } from './App'
 import { Weather } from '../../typings'
 import { mockWeather } from '../../service/__mocks__/mockWeather'
+import { fetchLocation, fetchWeather } from '../../service/api'
+import { mockLocation } from '../../service/__mocks__/mockLocation'
 
-jest.mock('../../service/api', () => ({ fetchLocationWeather: jest.fn() }))
+jest.mock('../../service/api', () => ({ fetchLocation: jest.fn(), fetchWeather: jest.fn() }))
 
 describe('App', () => {
   describe('App', () => {
@@ -14,46 +15,29 @@ describe('App', () => {
       expect(wrapper).toMatchSnapshot()
     })
   })
-  describe('renderWeatherStateImage', () => {
-    it('should render correctly and have image', () => {
-      const wrapper = shallow(<div>{renderWeatherStateImage(1, mockWeather)}</div>)
-      const imageWrapper = wrapper.find('img')
-      expect(imageWrapper).toHaveLength(1)
-      expect(wrapper).toMatchSnapshot()
-    })
-
-    it('should render correctly and return null', () => {
-      const wrapper = shallow(<div>{renderWeatherStateImage(1, {} as Weather)}</div>)
-      const imageWrapper = wrapper.find('img')
-      expect(imageWrapper).toHaveLength(0)
-      expect(wrapper).toMatchSnapshot()
-    })
-  })
   describe('renderCurrentWeatherInfo', () => {
     it('should render correctly and have data', () => {
       const wrapper = shallow(<div>{renderCurrentWeatherInfo(1, mockWeather)}</div>)
-      const colWrapper = wrapper.find('[className="col"]')
+      const colWrapper = wrapper.find('[className="text-center"]')
       expect(colWrapper).toHaveLength(1)
       expect(wrapper).toMatchSnapshot()
     })
 
     it('should render correctly and no data', () => {
       const wrapper = shallow(<div>{renderCurrentWeatherInfo(1, {} as Weather)}</div>)
-      const colWrapper = wrapper.find('[className="col"]')
+      const colWrapper = wrapper.find('[className="text-center"]')
       expect(colWrapper).toHaveLength(0)
       expect(wrapper).toMatchSnapshot()
     })
 
     it('should render correctly and have title', () => {
       const wrapper = shallow(<div>{renderCurrentWeatherInfo(1, mockWeather)}</div>)
+      const stateText = wrapper.find('h1').text()
+      expect(stateText).toEqual('Heavy Rain')
       const locationTitle = wrapper.find('h4').text()
       expect(locationTitle).toEqual('Ho Chi Minh City')
-      const stateText = wrapper.find('h5').text()
-      expect(stateText).toEqual('Heavy Rain')
       const dayText = wrapper.find('h6').text()
       expect(dayText).toEqual('Thursday')
-      const tempText = wrapper.find('h1').text()
-      expect(tempText).toEqual('32℃')
     })
   })
 
@@ -74,7 +58,8 @@ describe('App', () => {
   })
   describe('onSubmit', () => {
     it('should callSetLoading setError, setWeather', (done) => {
-      ;(fetchLocationWeather as jest.Mocked<any>).mockReturnValueOnce(Promise.resolve({ data: mockWeather }))
+      ;(fetchLocation as jest.Mocked<any>).mockReturnValueOnce(Promise.resolve({ data: mockLocation }))
+      ;(fetchWeather as jest.Mocked<any>).mockReturnValueOnce(Promise.resolve({ data: mockWeather }))
       const mockEvent = {
         preventDefault: jest.fn(),
         target: {
@@ -100,7 +85,8 @@ describe('App', () => {
     })
 
     it('should call only setError', (done) => {
-      ;(fetchLocationWeather as jest.Mocked<any>).mockReturnValueOnce(Promise.reject({ message: 'mockError' }))
+      ;(fetchLocation as jest.Mocked<any>).mockReturnValueOnce(Promise.resolve({ message: 'mockError' }))
+      ;(fetchWeather as jest.Mocked<any>).mockReturnValueOnce(Promise.reject({ message: 'mockError' }))
       const mockEvent = {
         preventDefault: jest.fn(),
         target: {

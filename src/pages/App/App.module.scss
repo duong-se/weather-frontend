@@ -1,12 +1,15 @@
 .root {
   background-color: #ebedf0;
   min-height: 100vh;
-  .weatherStateImage {
-    width: 15rem;
+  .information {
+    margin: 0 auto;
   }
   .weatherWidget {
-    min-height: 35rem;
-    max-width: 52rem;
+    min-height: 30rem;
+    max-width: 55rem;
     margin: 0 auto;
+  }
+  .temperatureText {
+    font-size: 5rem;
   }
 }

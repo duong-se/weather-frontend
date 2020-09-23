@@ -10,20 +10,25 @@ export const ERROR_MESSAGE = {
   FALLBACK_ERROR: 'Error when get the weather',
 }
 
+export const HTTP_STATUS = {
+  OK: 200,
+  NOT_FOUND: 404,
+}
+
 export const fetchLocation = ({ locationName }: FetchLocationParams): Promise<WeatherLocation[]> => {
   return new Promise((resolve, reject) => {
     fetch(`${process.env.REACT_APP_API_URL}/api/location/search/?query=${locationName}`)
       .then((response) => {
-        if (response.status !== 200) {
+        if (response.status !== HTTP_STATUS.OK) {
           reject({ message: ERROR_MESSAGE.FALLBACK_ERROR })
           return
         }
-        if (response.status === 200) {
+        if (response.status === HTTP_STATUS.OK) {
           return response.json()
         }
       })
-      .then((result) => resolve(result))
-      .catch((error) => reject(error))
+      .then(resolve)
+      .catch(reject)
   })
 }
 
@@ -39,38 +44,19 @@ export const fetchWeather = ({ woeid }: FetchWeatherParams): Promise<Weather> =>
     }
     fetch(`${process.env.REACT_APP_API_URL}/api/location/${woeid}/`)
       .then((response) => {
-        if (response.status === 400) {
+        if (response.status === HTTP_STATUS.NOT_FOUND) {
           reject({ message: ERROR_MESSAGE.LOCATION_NOT_FOUND })
           return
         }
-        if (response.status !== 200) {
+        if (response.status !== HTTP_STATUS.OK) {
           reject({ message: ERROR_MESSAGE.FALLBACK_ERROR })
           return
         }
-        if (response.status === 200) {
+        if (response.status === HTTP_STATUS.OK) {
           return response.json()
         }
       })
-      .then((result) => resolve(result))
-      .catch((error) => reject(error))
-  })
-}
-
-export type FetchLocationWeather = {
-  locationName: string
-}
-
-export const fetchLocationWeather = ({ locationName }: FetchLocationWeather): Promise<Weather> => {
-  return new Promise((resolve, reject) => {
-    fetchLocation({ locationName })
-      .then((result) => {
-        const firstWeatherLocationWoeid = result?.[0]?.woeid
-        fetchWeather({ woeid: firstWeatherLocationWoeid }).then((result) => {
-          resolve(result)
-        })
-      })
-      .catch((error) => {
-        reject(error)
-      })
+      .then(resolve)
+      .catch(reject)
   })
 }

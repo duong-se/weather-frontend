@@ -6,50 +6,52 @@ exports[`LocationSearchForm should match snapshot 1`] = `
   onSubmit={[MockFunction]}
 >
   <div
-    className="row"
+    className="input-group flex-nowrap"
   >
-    <div
-      className="col-sm-8 col-md-8 col-lg-3 mb-4"
+    <input
+      className="form-control"
+      id="locationName"
+      name="locationName"
+      placeholder="Search"
+      required={true}
+      type="text"
+    />
+    <button
+      className="input-group-prepend searchButton"
+      type="submit"
     >
-      <TextInput />
-    </div>
-    <div
-      className="col-sm-4 cold-md-4 col-lg-3 mb-4"
-    >
-      <button
-        className="btn btn-primary w-100"
-        type="submit"
-      >
-        <Spin />
-      </button>
-    </div>
+      <Spin />
+    </button>
   </div>
 </form>
 `;
 
-exports[`LocationSearchForm should match snapshot 2`] = `
+exports[`LocationSearchForm should match snapshot and have search icon 1`] = `
 <form
   className="w-100"
   onSubmit={[MockFunction]}
 >
   <div
-    className="row"
+    className="input-group flex-nowrap"
   >
-    <div
-      className="col-sm-8 col-md-8 col-lg-3 mb-4"
+    <input
+      className="form-control"
+      id="locationName"
+      name="locationName"
+      placeholder="Search"
+      required={true}
+      type="text"
+    />
+    <button
+      className="input-group-prepend searchButton"
+      type="submit"
     >
-      <TextInput />
-    </div>
-    <div
-      className="col-sm-4 cold-md-4 col-lg-3 mb-4"
-    >
-      <button
-        className="btn btn-primary w-100"
-        type="submit"
+      <span
+        className="searchIcon"
       >
-        Submit
-      </button>
-    </div>
+        <ForwardRef(SvgSearchIcon) />
+      </span>
+    </button>
   </div>
 </form>
 `;

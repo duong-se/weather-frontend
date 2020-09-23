@@ -8,7 +8,7 @@ exports[`App App should match snapshot 1`] = `
     className="card p-4 weatherWidget"
   >
     <div
-      className="row no-gutters my-4"
+      className="row no-gutters mb-4 information"
     >
       <LocationSearchForm
         isLoading={false}
@@ -16,10 +16,10 @@ exports[`App App should match snapshot 1`] = `
       />
     </div>
     <div
-      className="row no-gutters mb-4"
+      className="row no-gutters mb-4 information"
     />
     <div
-      className="row no-gutters mb-4"
+      className="row no-gutters information"
     >
       <ForecastList
         consolidatedWeathers={Array []}
@@ -33,21 +33,27 @@ exports[`App App should match snapshot 1`] = `
 exports[`App renderCurrentWeatherInfo should render correctly and have data 1`] = `
 <div>
   <div
-    className="col"
+    className="text-center"
   >
+    <h1>
+      Heavy Rain
+    </h1>
+    <div>
+      <span
+        className="temperatureText"
+      >
+        32
+      </span>
+      <span>
+        ℃
+      </span>
+    </div>
     <h4>
       Ho Chi Minh City
     </h4>
-    <h5>
-      Heavy Rain
-    </h5>
     <h6>
       Thursday
     </h6>
-    <h1>
-      32
-      ℃
-    </h1>
   </div>
 </div>
 `;
@@ -67,19 +73,3 @@ exports[`App renderError should renderError 1`] = `
   </div>
 </div>
 `;
-
-exports[`App renderWeatherStateImage should render correctly and have image 1`] = `
-<div>
-  <div
-    className="col text-center"
-  >
-    <img
-      alt="hr"
-      className="weatherStateImage"
-      src="/static/img/weather/hr.svg"
-    />
-  </div>
-</div>
-`;
-
-exports[`App renderWeatherStateImage should render correctly and return null 1`] = `<div />`;
