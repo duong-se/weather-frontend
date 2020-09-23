@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForecastItem should match snapshot 1`] = `
+<button
+  className="m-2 btn btn-light root"
+  onClick={[MockFunction]}
+>
+  <h6
+    className="card-subtitle mb-2 mt-2 text-muted textFontSize"
+  >
+    Tuesday
+  </h6>
+  <div
+    className="weatherStateImg mb-2"
+  >
+    <img
+      alt="lc"
+      src="/static/img/weather/lc.svg"
+    />
+  </div>
+  <div
+    className="row card-text d-flex temperature"
+  >
+    <h6
+      className="textFontSize"
+      data-test="min-temp"
+    >
+      15
+      ℃
+    </h6>
+    <h6
+      className="textFontSize"
+      data-test="max-temp"
+    >
+      24
+      ℃
+    </h6>
+  </div>
+</button>
+`;

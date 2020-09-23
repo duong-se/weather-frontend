@@ -1,10 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import LocationInput from './LocationInput'
+import Spin from './Spin'
 
-describe('LocationInput', () => {
+describe('Spin', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow(<LocationInput />)
+    const wrapper = shallow(<Spin />)
     expect(wrapper).toMatchSnapshot()
   })
 })

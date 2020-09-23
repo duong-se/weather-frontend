@@ -1,4 +1,4 @@
-export const roundNumber = (value: number) => {
+export const roundNumber = (value?: number) => {
   if (!value) {
     return 0
   }

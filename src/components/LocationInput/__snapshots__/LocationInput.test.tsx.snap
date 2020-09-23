@@ -15,9 +15,10 @@ exports[`LocationInput should match snapshot 1`] = `
   </div>
   <input
     className="form-control"
-    id="woeid"
-    name="woeid"
+    id="locationName"
+    name="locationName"
     placeholder="Search"
+    required={true}
     type="text"
   />
 </div>

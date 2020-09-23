@@ -23,7 +23,7 @@ describe('roundNumber', () => {
   })
 
   it('should run correctly and return 0', () => {
-    const input = undefined as any
+    const input = undefined
     const output = 0
     const result = roundNumber(input)
     expect(result).toEqual(output)

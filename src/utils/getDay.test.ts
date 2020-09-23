@@ -7,5 +7,11 @@ describe('getDays', () => {
     const output = getDay(input)
     expect(output).toEqual(ouput)
   })
-})
 
+  it('should run correctly and return empty', () => {
+    const input = undefined
+    const ouput = ''
+    const output = getDay(input)
+    expect(output).toEqual(ouput)
+  })
+})

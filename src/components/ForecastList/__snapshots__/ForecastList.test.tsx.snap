@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForecastList ForecastList should match snapshot 1`] = `
+<div
+  className="row justify-content-center no-gutters"
+>
+  <ForecastItem
+    consolidatedWeather={
+      Object {
+        "air_pressure": 1008.5,
+        "applicable_date": "2020-09-22",
+        "created": "2020-09-22T15:20:01.480287Z",
+        "humidity": 51,
+        "id": 6547671268458496,
+        "max_temp": 24,
+        "min_temp": 14.78,
+        "predictability": 70,
+        "the_temp": 24.035,
+        "visibility": 9.400414081762506,
+        "weather_state_abbr": "lc",
+        "weather_state_name": "Light Cloud",
+        "wind_direction": 217.66164574425014,
+        "wind_direction_compass": "SW",
+        "wind_speed": 5.706272015681752,
+      }
+    }
+    data-test="forecast-item"
+    key="6547671268458496"
+    onClick={[Function]}
+  />
+  <ForecastItem
+    consolidatedWeather={
+      Object {
+        "air_pressure": 1001.5,
+        "applicable_date": "2020-09-23",
+        "created": "2020-09-22T15:20:02.471805Z",
+        "humidity": 70,
+        "id": 4713030018400256,
+        "max_temp": 19.13,
+        "min_temp": 11.469999999999999,
+        "predictability": 77,
+        "the_temp": 18.705,
+        "visibility": 8.366141732283463,
+        "weather_state_abbr": "hr",
+        "weather_state_name": "Heavy Rain",
+        "wind_direction": 229.33431218602843,
+        "wind_direction_compass": "SW",
+        "wind_speed": 7.6319694457806415,
+      }
+    }
+    data-test="forecast-item"
+    key="4713030018400256"
+    onClick={[Function]}
+  />
+  <ForecastItem
+    consolidatedWeather={
+      Object {
+        "air_pressure": 996.5,
+        "applicable_date": "2020-09-24",
+        "created": "2020-09-22T15:20:02.052900Z",
+        "humidity": 59,
+        "id": 6312566033743872,
+        "max_temp": 15.34,
+        "min_temp": 8.844999999999999,
+        "predictability": 77,
+        "the_temp": 15.274999999999999,
+        "visibility": 14.177205122087011,
+        "weather_state_abbr": "hr",
+        "weather_state_name": "Heavy Rain",
+        "wind_direction": 225.3331262999033,
+        "wind_direction_compass": "SW",
+        "wind_speed": 9.736295492422917,
+      }
+    }
+    data-test="forecast-item"
+    key="6312566033743872"
+    onClick={[Function]}
+  />
+  <ForecastItem
+    consolidatedWeather={
+      Object {
+        "air_pressure": 1004.5,
+        "applicable_date": "2020-09-25",
+        "created": "2020-09-22T15:20:01.658749Z",
+        "humidity": 61,
+        "id": 4546612517928960,
+        "max_temp": 13.82,
+        "min_temp": 7.495,
+        "predictability": 75,
+        "the_temp": 13.04,
+        "visibility": 14.033979062276305,
+        "weather_state_abbr": "lr",
+        "weather_state_name": "Light Rain",
+        "wind_direction": 334.5010293182893,
+        "wind_direction_compass": "NNW",
+        "wind_speed": 10.535621595103263,
+      }
+    }
+    data-test="forecast-item"
+    key="4546612517928960"
+    onClick={[Function]}
+  />
+  <ForecastItem
+    consolidatedWeather={
+      Object {
+        "air_pressure": 1015,
+        "applicable_date": "2020-09-26",
+        "created": "2020-09-22T15:20:02.569048Z",
+        "humidity": 48,
+        "id": 4604599405117440,
+        "max_temp": 13.649999999999999,
+        "min_temp": 7.385,
+        "predictability": 68,
+        "the_temp": 13.485,
+        "visibility": 17.28157559850473,
+        "weather_state_abbr": "c",
+        "weather_state_name": "Clear",
+        "wind_direction": 330.16248530421626,
+        "wind_direction_compass": "NNW",
+        "wind_speed": 8.837651108873512,
+      }
+    }
+    data-test="forecast-item"
+    key="4604599405117440"
+    onClick={[Function]}
+  />
+  <ForecastItem
+    consolidatedWeather={
+      Object {
+        "air_pressure": 1021,
+        "applicable_date": "2020-09-27",
+        "created": "2020-09-22T15:20:04.446373Z",
+        "humidity": 47,
+        "id": 6338147862446080,
+        "max_temp": 14.48,
+        "min_temp": 5.655,
+        "predictability": 68,
+        "the_temp": 12.6,
+        "visibility": 9.999726596675416,
+        "weather_state_abbr": "c",
+        "weather_state_name": "Clear",
+        "wind_direction": 314.5,
+        "wind_direction_compass": "NW",
+        "wind_speed": 4.190453948938201,
+      }
+    }
+    data-test="forecast-item"
+    key="6338147862446080"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`ForecastList ForecastList should render current weather 1`] = `
+<div
+  className="row justify-content-center no-gutters"
+/>
+`;

@@ -1,4 +1,4 @@
-export const consolidatedWeather = {
+export const mockConsolidatedWeather = {
   "id": 6547671268458496,
   "weather_state_name": "Light Cloud",
   "weather_state_abbr": "lc",

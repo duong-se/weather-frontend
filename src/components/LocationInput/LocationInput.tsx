@@ -5,9 +5,11 @@ export const TextInput: React.FC = () => {
   return (
     <div className="input-group flex-nowrap">
       <div className="input-group-prepend">
-        <span className="input-group-text"><SearchIcon/></span>
+        <span className="input-group-text">
+          <SearchIcon />
+        </span>
       </div>
-      <input name="locationName" type="text" className="form-control" id="locationName" placeholder="Search" />
+      <input name="locationName" type="text" className="form-control" id="locationName" placeholder="Search" required />
     </div>
   )
 }
