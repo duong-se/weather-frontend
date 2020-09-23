@@ -23,8 +23,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "cross-env CI=true TZ=UTC react-scripts test --color --coverage --env=jsdom",
-    "eject": "react-scripts eject",
     "lint": "eslint --fix --ext=jsx,ts,tsx src"
   },
   "eslintConfig": {
@@ -48,7 +46,6 @@
     "@types/enzyme": "^3.10.6",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/isomorphic-fetch": "^0.0.35",
-    "cross-env": "^7.0.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
     "enzyme-to-json": "^3.5.0",

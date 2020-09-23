@@ -37,6 +37,13 @@ describe('App', () => {
       expect(wrapper).toMatchSnapshot()
     })
 
+    it('should render correctly and no data', () => {
+      const wrapper = shallow(<div>{renderCurrentWeatherInfo(1, {} as Weather)}</div>)
+      const colWrapper = wrapper.find('[className="col"]')
+      expect(colWrapper).toHaveLength(0)
+      expect(wrapper).toMatchSnapshot()
+    })
+
     it('should render correctly and have title', () => {
       const wrapper = shallow(<div>{renderCurrentWeatherInfo(1, mockWeather)}</div>)
       const locationTitle = wrapper.find('h4').text()

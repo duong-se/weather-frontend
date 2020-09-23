@@ -52,6 +52,8 @@ exports[`App renderCurrentWeatherInfo should render correctly and have data 1`] 
 </div>
 `;
 
+exports[`App renderCurrentWeatherInfo should render correctly and no data 1`] = `<div />`;
+
 exports[`App renderError should render null 1`] = `<div />`;
 
 exports[`App renderError should renderError 1`] = `
